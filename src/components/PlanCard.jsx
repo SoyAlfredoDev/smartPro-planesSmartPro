@@ -26,14 +26,22 @@ export default function PlanCard({
 
       {/* Floating Badges */}
       {(badge || masVendido) && (
-        <div className="plan-card__badge-wrapper">
+        <div
+          className={`plan-card__badge-wrapper ${
+            highlighted ? "plan-card__badge--highlighted" : ""
+          }`}
+        >
           {masVendido && (
             <span className="plan-card__badge plan-card__badge--popular">
               <Star size={14} className="inline mr-1" /> Más Vendido
             </span>
           )}
           {badge && badge.toLowerCase() !== "mas vendido" && (
-            <span className="plan-card__badge plan-card__badge--discount">
+            <span
+              className={`plan-card__badge plan-card__badge--discount ${
+                highlighted ? "plan-card__badge--highlighted" : ""
+              }`}
+            >
               {badge}
             </span>
           )}
@@ -46,7 +54,9 @@ export default function PlanCard({
         <div className="plan-card__pricing">
           <div className="plan-card__old-price-wrapper">
             {oldPrice && oldPrice.trim() !== "" ? (
-              <p className="plan-card__old-price">{oldPrice}</p>
+              <p className="plan-card__old-price_p">
+                antes: <span className="plan-card__old-price"> {oldPrice}</span>
+              </p>
             ) : (
               <p className="plan-card__old-price-spacer">&nbsp;</p>
             )}

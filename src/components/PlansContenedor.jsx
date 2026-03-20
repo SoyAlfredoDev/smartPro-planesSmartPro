@@ -32,7 +32,7 @@ export default function PlansContenedor() {
       case "Todos":
         return allPlans;
       case "Mas vendidos":
-        return allPlans.filter((plan) => plan.masVendido === true);
+        return allPlans.filter((plan) => plan.highlighted === true);
       case "Chatbots":
         return chatBotPlansData;
       case "Servicios Web":
