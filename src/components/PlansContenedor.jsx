@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useCallback } from "react";
 import PlanCard from "./PlanCard";
 import Help from "./Help";
 import "./PlansContenedor.css";
@@ -6,18 +6,26 @@ import {
   chatBotPlansData,
   serviciosWebPlansData,
   contenidoDigitalPlansData,
+  leadsPlansData,
 } from "../assets/plans";
+
+const CARD_WIDTH = 340;
+const GAP = 32;
+const STEP = CARD_WIDTH + GAP; // 372px per card slot
+const VISIBLE_CARDS = 3;
 
 export default function PlansContenedor() {
   const [selectedCategory, setSelectedCategory] = useState("Servicios Web");
+  const [currentIndex, setCurrentIndex] = useState(0);
   const gridRef = useRef(null);
 
   const categories = [
     "Todos",
     "Mas vendidos",
-    "Chatbots",
     "Servicios Web",
     "Contenido Digital",
+    "Chatbots Automatizados",
+    "Leads + Plataforma de Ventas",
   ];
 
   const allPlans = useMemo(
@@ -25,6 +33,7 @@ export default function PlansContenedor() {
       ...chatBotPlansData,
       ...serviciosWebPlansData,
       ...contenidoDigitalPlansData,
+      ...leadsPlansData,
     ],
     [],
   );
@@ -35,28 +44,40 @@ export default function PlansContenedor() {
         return allPlans;
       case "Mas vendidos":
         return allPlans.filter((plan) => plan.highlighted === true);
-      case "Chatbots":
-        return chatBotPlansData;
       case "Servicios Web":
         return serviciosWebPlansData;
       case "Contenido Digital":
         return contenidoDigitalPlansData;
+      case "Chatbots Automatizados":
+        return chatBotPlansData;
+      case "Leads + Plataforma de Ventas":
+        return leadsPlansData;
       default:
         return allPlans;
     }
   }, [selectedCategory, allPlans]);
 
-  // 👉 Scroll control (flechas)
-  const scrollGrid = (direction) => {
-    if (!gridRef.current) return;
+  const useCarousel = filteredPlans.length > VISIBLE_CARDS;
+  const maxIndex = useCarousel
+    ? Math.max(0, filteredPlans.length - VISIBLE_CARDS)
+    : 0;
 
-    const scrollAmount = gridRef.current.clientWidth * 0.8;
+  /* Reset position when category changes */
+  const handleCategoryChange = useCallback((e) => {
+    setSelectedCategory(e.target.value);
+    setCurrentIndex(0);
+  }, []);
 
-    gridRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+  /* Navigate carousel */
+  const scrollLeft = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - VISIBLE_CARDS));
   };
+
+  const scrollRight = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + VISIBLE_CARDS));
+  };
+
+  const translateX = -(currentIndex * STEP);
 
   return (
     <section className="plansContent">
@@ -78,7 +99,7 @@ export default function PlansContenedor() {
               id="plans-filter"
               className="plansContent__select"
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={handleCategoryChange}
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
@@ -90,37 +111,59 @@ export default function PlansContenedor() {
         </div>
       </div>
 
-      {/* 🔥 NUEVO WRAPPER (NO rompe nada) */}
-      <div className="plansContent__carousel">
-        <button
-          type="button"
-          className="plansContent__arrow plansContent__arrow--left"
-          onClick={() => scrollGrid("left")}
-        >
-          ‹
-        </button>
+      <div
+        className={`plansContent__carousel ${useCarousel ? "is-carousel" : ""}`}
+      >
+        {useCarousel && (
+          <button
+            type="button"
+            className="plansContent__arrow plansContent__arrow--left"
+            onClick={scrollLeft}
+            disabled={currentIndex === 0}
+            aria-label="Mostrar planes anteriores"
+          >
+            ‹
+          </button>
+        )}
 
-        <div className="plansContent__grid" ref={gridRef}>
-          {filteredPlans.length > 0 ? (
-            filteredPlans.map((plan, index) => (
-              <div className="plansContent__item" key={`${plan.name}-${index}`}>
-                <PlanCard {...plan} index={index} />
+        <div className="plansContent__viewport" ref={gridRef}>
+          <div
+            className={`plansContent__grid ${useCarousel ? "plansContent__grid--carousel" : ""}`}
+            style={
+              useCarousel
+                ? { transform: `translateX(${translateX}px)` }
+                : undefined
+            }
+          >
+            {filteredPlans.length > 0 ? (
+              filteredPlans.map((plan, index) => (
+                <div
+                  className="plansContent__item"
+                  key={`${plan.name}-${index}`}
+                >
+                  <PlanCard {...plan} index={index} />
+                </div>
+              ))
+            ) : (
+              <div className="plansContent__empty">
+                <p>No se encontraron planes en esta categoría.</p>
               </div>
-            ))
-          ) : (
-            <div className="plansContent__empty">
-              <p>No se encontraron planes en esta categoría.</p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
+        <p className="plansContent__deslizar">Deslizar para ver mas planes</p>
 
-        <button
-          type="button"
-          className="plansContent__arrow plansContent__arrow--right"
-          onClick={() => scrollGrid("right")}
-        >
-          ›
-        </button>
+        {useCarousel && (
+          <button
+            type="button"
+            className="plansContent__arrow plansContent__arrow--right"
+            onClick={scrollRight}
+            disabled={currentIndex >= maxIndex}
+            aria-label="Mostrar más planes"
+          >
+            ›
+          </button>
+        )}
       </div>
 
       <Help />
