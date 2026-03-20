@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
-import PlanCard from "./PlanCard.jsx";
+import PlanCard from "./PlanCard";
 import "./PlansContenedor.css";
 import {
   chatBotPlansData,
   serviciosWebPlansData,
   contenidoDigitalPlansData,
-} from "../assets/plans.js";
+} from "../assets/plans";
 
 export default function PlansContenedor() {
   const [selectedCategory, setSelectedCategory] = useState("Servicios Web");

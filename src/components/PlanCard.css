@@ -145,7 +145,7 @@
    ========================= */
 
 .plan-card__header {
-  padding: 3rem 2rem 1.5rem;
+  padding: 4rem 2rem 0rem;
   background: linear-gradient(
     180deg,
     rgba(2, 31, 65, 0.03) 0%,
@@ -159,7 +159,7 @@
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--navy);
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.3rem 0;
   line-height: 1.1;
   text-transform: uppercase;
 }
@@ -167,7 +167,7 @@
 .plan-card__pricing {
   display: flex;
   flex-direction: column;
-  min-height: 5.5rem; /* mantiene bloque precio uniforme */
+  min-height: 4.5rem; /* mantiene bloque precio uniforme */
 }
 
 .plan-card__old-price-wrapper {
@@ -190,6 +190,11 @@
   color: var(--brand-pink);
   letter-spacing: -0.03em;
   line-height: 1;
+  text-align: center;
+}
+
+.plan-card__price-row {
+  text-align: center;
 }
 
 .plan-card__tax {
@@ -197,6 +202,17 @@
   font-size: 0.8rem;
   font-weight: 600;
   margin-top: 0.4rem;
+}
+/* =========================
+   DIVIDER
+   ========================= */
+
+.plan-card__divider {
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin-bottom: 1rem;
 }
 
 /* =========================

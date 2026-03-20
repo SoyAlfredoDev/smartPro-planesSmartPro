@@ -42,12 +42,14 @@ export default function PlanCard({
 
       <header className="plan-card__header">
         <h3 className="plan-card__title">{name}</h3>
-        
+
         <div className="plan-card__pricing">
           <div className="plan-card__old-price-wrapper">
             {oldPrice && oldPrice.trim() !== "" ? (
               <p className="plan-card__old-price">{oldPrice}</p>
-            ) : <p className="plan-card__old-price-spacer">&nbsp;</p>}
+            ) : (
+              <p className="plan-card__old-price-spacer">&nbsp;</p>
+            )}
           </div>
           <div className="plan-card__price-row">
             <span className="plan-card__price">{price}</span>
@@ -55,6 +57,7 @@ export default function PlanCard({
           </div>
         </div>
       </header>
+      <hr className="plan-card__divider" />
 
       <div className="plan-card__body">
         <ul className="plan-card__features">
@@ -69,7 +72,8 @@ export default function PlanCard({
 
       <footer className="plan-card__footer">
         <a className="plan-card__button" href={href}>
-          {buttonText} <ArrowRight size={18} className="plan-card__button-icon" />
+          {buttonText}{" "}
+          <ArrowRight size={18} className="plan-card__button-icon" />
         </a>
       </footer>
     </article>
