@@ -338,6 +338,7 @@ strong {
 
   .plan-card {
     min-height: auto;
+    margin: 0px 10px;
   }
 
   .plan-card__header {

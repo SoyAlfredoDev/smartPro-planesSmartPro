@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import PlanCard from "./PlanCard";
+import Help from "./Help";
 import "./PlansContenedor.css";
 import {
   chatBotPlansData,
@@ -9,6 +10,7 @@ import {
 
 export default function PlansContenedor() {
   const [selectedCategory, setSelectedCategory] = useState("Servicios Web");
+  const gridRef = useRef(null);
 
   const categories = [
     "Todos",
@@ -44,6 +46,18 @@ export default function PlansContenedor() {
     }
   }, [selectedCategory, allPlans]);
 
+  // 👉 Scroll control (flechas)
+  const scrollGrid = (direction) => {
+    if (!gridRef.current) return;
+
+    const scrollAmount = gridRef.current.clientWidth * 0.8;
+
+    gridRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="plansContent">
       <div className="plansContent__topbar">
@@ -76,19 +90,40 @@ export default function PlansContenedor() {
         </div>
       </div>
 
-      <div className="plansContent__grid">
-        {filteredPlans.length > 0 ? (
-          filteredPlans.map((plan, index) => (
-            <div className="plansContent__item" key={`${plan.name}-${index}`}>
-              <PlanCard {...plan} index={index} />
+      {/* 🔥 NUEVO WRAPPER (NO rompe nada) */}
+      <div className="plansContent__carousel">
+        <button
+          type="button"
+          className="plansContent__arrow plansContent__arrow--left"
+          onClick={() => scrollGrid("left")}
+        >
+          ‹
+        </button>
+
+        <div className="plansContent__grid" ref={gridRef}>
+          {filteredPlans.length > 0 ? (
+            filteredPlans.map((plan, index) => (
+              <div className="plansContent__item" key={`${plan.name}-${index}`}>
+                <PlanCard {...plan} index={index} />
+              </div>
+            ))
+          ) : (
+            <div className="plansContent__empty">
+              <p>No se encontraron planes en esta categoría.</p>
             </div>
-          ))
-        ) : (
-          <div className="plansContent__empty">
-            <p>No se encontraron planes en esta categoría.</p>
-          </div>
-        )}
+          )}
+        </div>
+
+        <button
+          type="button"
+          className="plansContent__arrow plansContent__arrow--right"
+          onClick={() => scrollGrid("right")}
+        >
+          ›
+        </button>
       </div>
+
+      <Help />
     </section>
   );
 }
