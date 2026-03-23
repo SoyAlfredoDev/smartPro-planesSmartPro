@@ -28,56 +28,58 @@ export default function ServiceCard({ item, onOpenModal }) {
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e5dff0] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       {/* MOBILE */}
-      <div className="flex flex-1 items-start gap-3 p-3 sm:hidden">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#f4f7fb] ring-1 ring-[#e7edf5]">
-          <img
-            src={item.image}
-            alt={item.title.replace(/\n/g, " ")}
-            className="h-9 w-9 object-contain"
-          />
-        </div>
+      <div className="sm:hidden flex h-full flex-col">
+        <div className="flex items-center gap-3">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center">
+            <img
+              src={item.image}
+              alt={item.title.replace(/\n/g, " ")}
+              className="h-[100%] w-[100%] object-contain"
+            />
+          </div>
 
-        <div className="flex flex-1 flex-col">
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <h3 className="whitespace-pre-line text-[13px] font-bold leading-[1.15] text-[#161124]">
               {item.title}
             </h3>
-
-            {item.subtitle && (
-              <p className="mt-1 text-[11px] font-semibold text-[#2b243f]">
-                {item.subtitle}
-              </p>
-            )}
-
-            {item.description && (
-              <p className="mt-2 line-clamp-3 text-[10.5px] text-gray-600">
-                {item.description}
-              </p>
-            )}
-
-            {item.bullets?.length > 0 && (
-              <ul className="mt-3 space-y-1.5">
-                {item.bullets.map((bullet, i) => (
-                  <li
-                    key={i}
-                    className="flex gap-1.5 text-[10.5px] text-[#2b243f]"
-                  >
-                    <Check className="h-3.5 w-3.5 shrink-0 text-[#35b7df]" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
+        </div>
 
-          <div className="pt-3">
-            <button
-              onClick={() => onOpenModal(item.category)}
-              className="w-full rounded-full bg-[#35b7df] py-2 text-[11px] text-white transition hover:bg-[#2a9fd6]"
-            >
-              Ver planes
-            </button>
-          </div>
+        <div className="flex-1 px-3 pb-3">
+          {item.subtitle && (
+            <p className="mt-1 text-[11px] font-semibold text-[#2b243f]">
+              {item.subtitle}
+            </p>
+          )}
+
+          {item.description && (
+            <p className="mt-2 line-clamp-3 text-[10.5px] text-gray-600">
+              {item.description}
+            </p>
+          )}
+
+          {item.bullets?.length > 0 && (
+            <ul className="mt-3 space-y-1.5">
+              {item.bullets.map((bullet, i) => (
+                <li
+                  key={i}
+                  className="flex gap-1.5 text-[10.5px] text-[#2b243f]"
+                >
+                  <Check className="h-3.5 w-3.5 shrink-0 text-[#35b7df]" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="p-3 pt-0">
+          <button
+            onClick={() => onOpenModal(item.category)}
+            className="w-full rounded-full bg-[#35b7df] py-2 text-[11px] text-white transition hover:bg-[#2a9fd6]"
+          >
+            Ver planes
+          </button>
         </div>
       </div>
 
