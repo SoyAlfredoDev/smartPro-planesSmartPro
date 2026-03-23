@@ -1,3 +1,4 @@
+//TERMINADO
 export const chatBotPlansData = [
   {
     badge: "SmartPro®",
@@ -17,7 +18,7 @@ export const chatBotPlansData = [
       "Soporte eficiente 24/7",
     ],
     note: "Fácil integración con WhatsApp Business y/o redes sociales.",
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1945",
   },
   {
     badge: "SmartPro®",
@@ -38,7 +39,7 @@ export const chatBotPlansData = [
       "Soporte eficiente 24/7",
     ],
     note: "Fácil integración con WhatsApp Business y/o redes sociales.",
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1948",
   },
   {
     badge: "★ MÁS CONTRATADO",
@@ -59,11 +60,11 @@ export const chatBotPlansData = [
       "Soporte eficiente 24/7",
     ],
     note: "Fácil integración con WhatsApp Business y/o redes sociales.",
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1950",
     highlighted: true,
   },
 ];
-
+//TERMINADO
 export const serviciosWebPlansData = [
   {
     badge: "SmartPro®",
@@ -83,7 +84,7 @@ export const serviciosWebPlansData = [
     ],
     note: "Ideal para emprendedores que inician captación digital. Entrega desde 5 a 7 días hábiles. Activación inmediata.",
     highlighted: false,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1941",
   },
   {
     badge: "★ MÁS CONTRATADO",
@@ -103,7 +104,7 @@ export const serviciosWebPlansData = [
     ],
     note: "Negocio activo que necesita flujo constante de clientes. Entrega desde 5 a 7 días hábiles. Activación inmediata.",
     highlighted: true,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1938",
   },
   {
     badge: "SmartPro®",
@@ -123,14 +124,14 @@ export const serviciosWebPlansData = [
     ],
     note: "Sistema digital completo listo para escalar ventas. Entrega desde 5 a 7 días hábiles. Activación inmediata.",
     highlighted: false,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1933",
   },
   {
     badge: "SmartPro®",
     icon: "",
     name: "AGENDA ELECTRÓNICA",
     oldPrice: null,
-    price: "$499.900",
+    price: "$49.990",
     tax: "+ IVA",
     summary: null,
     featureGroupTitle: null,
@@ -142,7 +143,7 @@ export const serviciosWebPlansData = [
     ],
     note: "Gestiona tus citas de forma virtual y completamente profesional mediante un link personalizado.",
     highlighted: false,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1929",
   },
   {
     badge: "SmartPro®",
@@ -162,7 +163,7 @@ export const serviciosWebPlansData = [
     ],
     note: "Ideal para emprendimientos que inician su presencia digital.",
     highlighted: false,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1763",
   },
   {
     badge: "SmartPro®",
@@ -185,7 +186,7 @@ export const serviciosWebPlansData = [
     ],
     note: "Ideal para emprendimientos que inician su presencia digital.",
     highlighted: false,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1827",
   },
 ];
 
@@ -208,7 +209,7 @@ export const contenidoDigitalPlansData = [
       "Entrega final optimizada para campañas Meta®",
     ],
     note: "Video vertical, cuadrado y horizontal optimizado para publicidad digital.",
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1954",
   },
 
   {
@@ -228,7 +229,7 @@ export const contenidoDigitalPlansData = [
       "9 imágenes: $249.990",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1957",
   },
   {
     badge: "★ MÁS CONTRATADO",
@@ -249,7 +250,7 @@ export const contenidoDigitalPlansData = [
     ],
     note: "Permite comunicar confianza y credibilidad sin exposición personal.",
     highlighted: true,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1960",
   },
   {
     badge: "SmartPro®",
@@ -267,9 +268,11 @@ export const contenidoDigitalPlansData = [
       "Entrega final optimizada para campañas <strong>Meta®</strong>",
     ],
     note: "Video vertical, cuadrado y horizontal optimizado para publicidad digital.",
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1964",
   },
 ];
+
+//TERMINADO
 export const leadsPlansData = [
   {
     badge: "descuento: 5% ",
@@ -290,7 +293,7 @@ export const leadsPlansData = [
       "Asignación 1 a 1",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1172",
   },
   {
     badge: "descuento: 10%",
@@ -313,7 +316,7 @@ export const leadsPlansData = [
       "Acceso a material comercial profesional",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1169",
     highlighted: true,
   },
   {
@@ -338,7 +341,7 @@ export const leadsPlansData = [
       "Sesiones grupales de optimización",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1170",
   },
   {
     badge: null,
@@ -362,7 +365,7 @@ export const leadsPlansData = [
       "Ajustes estratégicos ilimitados",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1171",
   },
   {
     badge: null,
@@ -383,7 +386,7 @@ export const leadsPlansData = [
       "Soporte operativo básico",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1795",
   },
   {
     badge: "DESCUENTO: 5%",
@@ -404,7 +407,7 @@ export const leadsPlansData = [
       "Soporte operativo estándar",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1799",
   },
   {
     badge: "DESCUENTO: 10%",
@@ -427,7 +430,7 @@ export const leadsPlansData = [
       "Soporte operativo prioritario",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1805",
   },
   {
     badge: "DESCUENTO: 15%",
@@ -450,6 +453,6 @@ export const leadsPlansData = [
       "Soporte prioritario",
     ],
     note: null,
-    link: null,
+    link: "https://smartpro.cl/?add-to-cart=1813",
   },
 ];

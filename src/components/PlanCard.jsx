@@ -1,21 +1,26 @@
 import { Check, Star, ArrowRight } from "lucide-react";
 import "./PlanCard.css";
+import { useEffect } from "react";
 
-export default function PlanCard({
-  name,
-  oldPrice,
-  price,
-  tax = "Más IVA",
-  features = [],
-  buttonText = "Elegir plan",
-  href = "#",
-  highlighted = false,
-  badge,
-  index = 0,
-  masVendido = false,
-}) {
+export default function PlanCard({ plan }) {
+  const {
+    name,
+    oldPrice,
+    price,
+    tax,
+    features,
+    buttonText = "Elegir plan",
+    link,
+    highlighted,
+    badge,
+    index,
+    masVendido,
+  } = plan;
   // We can automatically highlight if it's masVendido
   const isHighlighted = highlighted || masVendido;
+  useEffect(() => {
+    console.log(plan);
+  }, []);
 
   return (
     <article
@@ -67,7 +72,7 @@ export default function PlanCard({
           </div>
         </div>
       </header>
-      <hr className="plan-card__divider" />
+      <hr className="plan-card__divider" style={{ marginBottom: "1rem" }} />
 
       <div className="plan-card__body">
         <ul className="plan-card__features">
@@ -81,7 +86,7 @@ export default function PlanCard({
       </div>
 
       <footer className="plan-card__footer">
-        <a className="plan-card__button" href={href}>
+        <a className="plan-card__button" href={link}>
           {buttonText}{" "}
           <ArrowRight size={18} className="plan-card__button-icon" />
         </a>

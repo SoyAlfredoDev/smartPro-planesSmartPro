@@ -1,10 +1,10 @@
 import "./App.css";
-import PlansContenedor from "./components/PlansContenedor.jsx";
+import SmartProSolutionsSection from "./components/SmartProSolutionsSection.jsx";
 
 function App() {
   return (
     <>
-      <PlansContenedor />
+      <SmartProSolutionsSection />
     </>
   );
 }

@@ -102,7 +102,7 @@
   align-items: flex-end;
   gap: 0.5rem;
   z-index: 10;
-  width: 130px;
+  width: 150px;
   margin-top: 60px;
   margin-right: -20px;
   background-color: var(--action-orange);
@@ -111,8 +111,8 @@
 .plan-card__badge {
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-pill);
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-size: 0.6rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   width: 100%;
@@ -338,4 +338,16 @@ strong {
   .plan-card__footer {
     padding: 0 1.5rem 2rem;
   }
+}
+
+/* =========================*/
+.plan-card__badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 100%;
+  text-align: center;
 }

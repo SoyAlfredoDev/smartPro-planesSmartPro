@@ -1,11 +1,9 @@
 .plansContent {
   width: 100%;
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
   font-family: "roboto", sans-serif;
 }
 
@@ -13,6 +11,7 @@
 
 .plansContent__topbar {
   width: 100%;
+  padding: 0 -2rem;
 }
 
 .plansContent__topbarInner {
@@ -199,7 +198,7 @@
     The viewport is the fixed-width clipping container.
   */
   .plansContent__carousel.is-carousel {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -242,6 +241,29 @@
   .plansContent__grid--carousel .plansContent__item {
     flex: 0 0 340px;
     width: 340px;
+  }
+  .plansContent__topbarInner {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .plansContent__filter {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .plansContent__label {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .plansContent__select {
+    min-width: 220px;
   }
 }
 
@@ -288,20 +310,44 @@
   .plansContent__arrow {
     display: none !important;
   }
+  .plansContent__topbarInner {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .plansContent__filter {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .plansContent__label {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .plansContent__select {
+    min-width: 220px;
+    margin-bottom: 1rem;
+  }
 }
 
 /* ================= MOBILE ≤768px ================= */
 
 @media (max-width: 768px) {
   .plansContent {
-    padding: 1.5rem 0;
-    gap: 2.5rem;
+    padding: 0.5rem 0;
+    gap: 0;
   }
 
   .plansContent__topbarInner {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 
   .plansContent__filter {
@@ -360,5 +406,149 @@
     font-weight: 700;
     color: var(--navy);
     margin-left: 0.25rem;
+    width: 95%;
   }
+}
+
+.plansContent__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  height: 3.4rem;
+  padding: 0 3rem 0 1.25rem;
+
+  border-radius: 14px;
+  border: 2px solid rgba(2, 31, 65, 0.08);
+
+  background-color: #ffffff;
+  color: #021f41;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  /* sombra suave */
+  box-shadow: 0 4px 12px rgba(2, 31, 65, 0.04);
+
+  /* icono flecha custom */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23021f41'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+}
+
+/* Hover */
+.plansContent__select:hover {
+  border-color: rgba(9, 79, 209, 0.4);
+  box-shadow: 0 6px 16px rgba(2, 31, 65, 0.08);
+}
+
+/* Focus (clave UX) */
+.plansContent__select:focus {
+  outline: none;
+  border-color: #ff4fc3;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 79, 195, 0.15),
+    0 8px 20px rgba(2, 31, 65, 0.08);
+}
+
+/* Active (cuando se hace click) */
+.plansContent__select:active {
+  transform: scale(0.98);
+}
+
+/* Disabled */
+.plansContent__select:disabled {
+  background-color: #f5f7fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plansContent__select {
+    height: 3.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+.plansContent__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  height: 3.4rem;
+  padding: 0 3rem 0 1.25rem;
+
+  border-radius: 14px;
+  border: 2px solid rgba(2, 31, 65, 0.08);
+
+  background-color: #ffffff;
+  color: #021f41;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  /* sombra suave */
+  box-shadow: 0 4px 12px rgba(2, 31, 65, 0.04);
+
+  /* icono flecha custom */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23021f41'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+}
+
+/* Hover */
+.plansContent__select:hover {
+  border-color: rgba(9, 79, 209, 0.4);
+  box-shadow: 0 6px 16px rgba(2, 31, 65, 0.08);
+}
+
+/* Focus (clave UX) */
+.plansContent__select:focus {
+  outline: none;
+  border-color: #ff4fc3;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 79, 195, 0.15),
+    0 8px 20px rgba(2, 31, 65, 0.08);
+}
+
+/* Active (cuando se hace click) */
+.plansContent__select:active {
+  transform: scale(0.98);
+}
+
+/* Disabled */
+.plansContent__select:disabled {
+  background-color: #f5f7fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plansContent__select {
+    height: 3.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+.plansContent__select option {
+  color: #021f41;
+  background: #ffffff;
 }

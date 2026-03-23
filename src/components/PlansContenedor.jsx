@@ -1,6 +1,5 @@
 import { useState, useMemo, useRef, useCallback } from "react";
 import PlanCard from "./PlanCard";
-import Help from "./Help";
 import "./PlansContenedor.css";
 import {
   chatBotPlansData,
@@ -83,14 +82,6 @@ export default function PlansContenedor() {
     <section className="plansContent">
       <div className="plansContent__topbar">
         <div className="plansContent__topbarInner">
-          <div className="plansContent__heading">
-            <span className="plansContent__eyebrow">Nuestras Soluciones</span>
-            <p className="plansContent__text">
-              Selecciona la categoría que mejor se adapte a tus necesidades y
-              encuentra el plan ideal.
-            </p>
-          </div>
-
           <div className="plansContent__filter">
             <label htmlFor="plans-filter" className="plansContent__label">
               Filtrar por categoría
@@ -165,8 +156,6 @@ export default function PlansContenedor() {
           </button>
         )}
       </div>
-
-      <Help />
     </section>
   );
 }
