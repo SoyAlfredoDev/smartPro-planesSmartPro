@@ -1,46 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
 import PlansModal from "./PlansModal";
+import BusinessLaunchSection from "./BusinessLaunchSection";
 
+import NewServiceCard from "./NewServiceCard";
+import NewServiceCardBussines from "./NewServiceCardBussines";
+
+// Pantallas medianas y grandes (Desktop/Tablet)
 const services = [
   {
-    title: "Desarrollo Web &\nPresencia Digital",
+    title: "Desarrollo Web Presencia Digital",
     subtitle: "Landing Pages y Sitios\nWeb de alto impacto",
     description:
       "Creamos páginas diseñadas para convertir: rápidas, estratégicas y enfocadas en generar contactos y ventas desde el primer día.",
     image: "/images/service-01.png",
-    bullets: [],
-    category: "Servicios Web",
+    bullets: [
+      "Páginas web optimizadas",
+      "Tiendas online",
+      "Landing pages",
+      "Sistemas a medida",
+    ],
+    category: "Desarrollo Web",
   },
   {
     title: "Campañas\nPublicitarias",
     subtitle: "Atracción de clientes reales",
     description:
-      "Diseñamos campañas enfocadas en generar leads y ventas reales.",
+      "Diseñamos y ejecutamos campañas en redes sociales orientadas a resultado, aumentando visibilidad, leads y oportunidades comerciales.",
     image: "/images/service-02.png",
-    bullets: [],
-    category: "Leads + Plataforma de Ventas",
+    bullets: [
+      "Generación de Leads",
+      "Visibilidad",
+      "Configuración estratégica",
+    ],
+    category: "Campaña Publicitaria",
   },
   {
     title: "Redes Sociales\n& Contenido",
     subtitle: "Posicionamiento constante",
     description:
-      "Gestión completa de redes sociales con estrategia de crecimiento.",
+      "Gestionamos tus redes sociales con estrategia: contenido, diseño, planificación y crecimiento orgánico.",
     image: "/images/service-03.png",
-    bullets: [],
-    category: "Contenido Digital",
+    bullets: [
+      "Gestión de contenido",
+      "Optimización de perfiles",
+      "Piezas graficas",
+    ],
+    category: "Redes Sociales",
   },
   {
-    title: "Producción Visual",
-    subtitle: "Contenido profesional",
+    title: "Producción \n Audiovisual",
+    description:
+      "Creamos contenido visual de alto impacto para potenciar tu marca y conectar con tu audiencia.",
+    subtitle: "Piezas graficas y videos corporativos",
     image: "/images/service-04.png",
     bullets: [
       "Piezas comerciales",
       "Videos corporativos",
-      "Producciones con modelo",
+      "Producciones con  modelo",
     ],
-    category: "Contenido Digital",
+    category: "Producción Visual",
   },
   {
     title: "Automatización\n& Conversión",
@@ -50,10 +70,12 @@ const services = [
       "Filtrado de clientes",
       "Agendamiento automático",
     ],
-    category: "Chatbots Automatizados",
+    category: "Automatización Bots",
   },
   {
-    title: "Ecosistema de Negocio",
+    title: "Membrecías Y Negocios",
+    description:
+      "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
     subtitle: "Modelo listo para vender",
     image: "/images/service-06.png",
     bullets: [
@@ -61,7 +83,101 @@ const services = [
       "Servicios integrados",
       "Modelo validado",
     ],
-    category: "Leads + Plataforma de Ventas",
+    category: "Membresías",
+  },
+];
+
+// Pantallas pequeñas (Móvil)
+const services2 = [
+  {
+    title: "Negocio funcionando desde el día 1",
+    description:
+      "En SmartPro® puedes acceder no solo a servicios, sino a un modelo completo que incluye:",
+    image: "/images/service-07.png",
+    bullets: [
+      "Estructura comercial",
+      "Soporte estratégico",
+      "Generación de oportunidades",
+      "Automatización",
+      "Soporte estratégico",
+    ],
+    category: "Negocio Completo",
+  },
+  {
+    title: "Desarrollo Web Presencia Digital",
+    subtitle: "Landing Pages y Sitios\nWeb de alto impacto",
+    description:
+      "Creamos páginas diseñadas para convertir: rápidas, estratégicas y enfocadas en generar contactos y ventas desde el primer día.",
+    image: "/images/service-01.png",
+    bullets: [
+      "Páginas web optimizadas",
+      "Tiendas online",
+      "Landing pages",
+      "Sistemas a medida",
+    ],
+    category: "Desarrollo Web",
+  },
+  {
+    title: "Campañas\nPublicitarias",
+    subtitle: "Atracción de clientes reales",
+    description:
+      "Diseñamos y ejecutamos campañas en redes sociales orientadas a resultado, aumentando visibilidad, leads y oportunidades comerciales.",
+    image: "/images/service-02.png",
+    bullets: [
+      "Generación de Leads",
+      "Visibilidad",
+      "Configuración estratégica",
+    ],
+    category: "Campaña Publicitaria",
+  },
+  {
+    title: "Redes Sociales\n& Contenido",
+    subtitle: "Posicionamiento constante",
+    description:
+      "Gestionamos tus redes sociales con estrategia: contenido, diseño, planificación y crecimiento orgánico.",
+    image: "/images/service-03.png",
+    bullets: [
+      "Gestión de contenido",
+      "Optimización de perfiles",
+      "Piezas graficas",
+    ],
+    category: "Redes Sociales",
+  },
+  {
+    title: "Producción \n Audiovisual",
+    description:
+      "Creamos contenido visual de alto impacto para potenciar tu marca y conectar con tu audiencia.",
+    subtitle: "Piezas graficas y videos corporativos",
+    image: "/images/service-04.png",
+    bullets: [
+      "Piezas comerciales",
+      "Videos corporativos",
+      "Producciones con  modelo",
+    ],
+    category: "Producción Visual",
+  },
+  {
+    title: "Automatización\n& Conversión",
+    image: "/images/service-05.png",
+    bullets: [
+      "Respuestas automáticas",
+      "Filtrado de clientes",
+      "Agendamiento automático",
+    ],
+    category: "Automatización Bots",
+  },
+  {
+    title: "Membrecías Y Negocios",
+    description:
+      "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
+    subtitle: "Modelo listo para vender",
+    image: "/images/service-06.png",
+    bullets: [
+      "Estructura comercial",
+      "Servicios integrados",
+      "Modelo validado",
+    ],
+    category: "Membresías",
   },
 ];
 
@@ -92,22 +208,67 @@ export default function SmartProSolutionsSection() {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
+  // Estados y referencias para el carrusel en móvil
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  // Función para detectar qué tarjeta está activa al hacer scroll
+  const handleScroll = () => {
+    if (carouselRef.current) {
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const cardWidth = carouselRef.current.offsetWidth;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(index);
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden py-14 sm:py-16 lg:py-20">
-      <div className="absolute inset-x-0 top-0 h-[280px] overflow-hidden sm:h-[340px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#40206e_0%,_#2b124f_48%,_#210f42_100%)]" />
+    <section
+      id="Servicios"
+      className="relative overflow-hidden pt-8 pb-6 sm:pt-16 sm:pb-0 lg:pt-14 lg:pb-0"
+    >
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+
+      {/* Background elements */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[320px] overflow-hidden sm:h-[420px] lg:h-[440px]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#4c2682_0%,_#34175f_38%,_#220f43_72%,_#180b31_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_24%,rgba(255,255,255,0)_48%)]" />
 
         <motion.div
-          animate={{ x: [0, 22, 0], y: [0, -10, 0] }}
+          animate={{ x: [0, 16, 0], y: [0, -8, 0] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -left-16 top-10 h-[150px] w-[150px] rounded-full bg-white/12 blur-[42px] sm:-left-20 sm:top-12 sm:h-[200px] sm:w-[200px] sm:blur-[56px]"
+        />
+
+        <motion.div
+          animate={{ x: [0, 18, 0], y: [0, -10, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-20 bottom-0 h-[180px] w-[180px] rounded-full bg-purple-400/20 blur-[80px] sm:h-[220px] sm:w-[220px]"
+          className="absolute -left-10 top-16 h-[82px] w-[82px] rounded-full border border-white/16 bg-white/10 blur-[8px] sm:top-20 sm:h-[110px] sm:w-[110px] sm:blur-[10px]"
         />
 
         <motion.div
-          animate={{ x: [0, -18, 0], y: [0, 12, 0] }}
+          animate={{ x: [0, -14, 0], y: [0, 10, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[-60px] bottom-[-30px] h-[210px] w-[210px] rounded-full bg-purple-300/20 blur-[90px] sm:h-[260px] sm:w-[260px]"
+          className="absolute right-[-40px] top-8 h-[160px] w-[160px] rounded-full bg-white/10 blur-[46px] sm:right-[-55px] sm:top-10 sm:h-[210px] sm:w-[210px] sm:blur-[60px]"
         />
+
+        <motion.div
+          animate={{ x: [0, -16, 0], y: [0, 12, 0] }}
+          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-6 top-20 h-[92px] w-[92px] rounded-full border border-white/14 bg-white/9 blur-[10px] sm:right-10 sm:top-24 sm:h-[120px] sm:w-[120px]"
+        />
+
+        <motion.div
+          animate={{ x: [0, 14, 0], y: [0, -6, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/2 top-3 h-[110px] w-[110px] -translate-x-1/2 rounded-full bg-white/8 blur-[36px] sm:top-8 sm:h-[140px] sm:w-[140px] sm:blur-[44px]"
+        />
+
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-white/0" />
       </div>
 
       <div className="relative mx-auto max-w-[1200px] px-3 sm:px-4 lg:px-6">
@@ -127,7 +288,7 @@ export default function SmartProSolutionsSection() {
 
           <motion.p
             variants={headerItem}
-            className="mt-4 text-sm leading-relaxed text-white/80 sm:text-lg md:text-xl lg:text-2xl"
+            className="mt-4 text-sm leading-relaxed text-white/85 sm:text-lg md:text-xl lg:text-2xl"
           >
             Creamos ecosistemas completos que combinan{" "}
             <strong className="text-white">
@@ -136,24 +297,74 @@ export default function SmartProSolutionsSection() {
           </motion.p>
         </motion.header>
 
+        {/* --- CONTENEDOR MÓVIL (Usa services2) --- */}
         <motion.div
           variants={sectionStagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.12 }}
-          className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
+          ref={carouselRef}
+          onScroll={handleScroll}
+          className="md:hidden hide-scrollbar mt-8 flex w-full snap-x snap-mandatory overflow-x-auto pb-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {services.map((item, i) => (
-            <ServiceCard
-              key={i}
-              item={item}
-              onOpenModal={(category) => {
-                setSelectedCategory(category || "Todos");
-                setOpen(true);
-              }}
-            />
+          {services2.map((item, i) => (
+            <div
+              key={`mobile-${i}`}
+              className="w-[99%] mx-auto justify-center shrink-0 snap-center px-2 sm:min-w-[30px]"
+            >
+              <NewServiceCard
+                item={item}
+                onOpenModal={(category) => {
+                  setSelectedCategory(category || "Todos");
+                  setOpen(true);
+                }}
+              />
+            </div>
           ))}
         </motion.div>
+
+        {/* Barras de estado y texto (Solo visibles en móvil y asociadas a services2) */}
+        <div className="mt-2 flex flex-col items-center md:hidden pb-6">
+          <div className="flex space-x-1.5">
+            {services2.map((_, i) => (
+              <div
+                key={`dot-${i}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  activeIndex === i ? "w-6 bg-pink-500" : "w-2 bg-pink-200"
+                }`}
+              />
+            ))}
+          </div>
+          <p className="mt-3 text-xs font-medium text-pink-400">
+            Desliza para ver todos nuestros servicios
+          </p>
+        </div>
+
+        {/* --- CONTENEDOR DESKTOP / TABLET (Usa services) --- */}
+        <motion.div
+          variants={sectionStagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12 }}
+          className="hidden md:mt-10 md:grid md:grid-cols-2 md:justify-items-center md:gap-5 md:pb-0 xl:grid-cols-3 xl:gap-6"
+        >
+          {services.map((item, i) => (
+            <div key={`desktop-${i}`} className="w-full">
+              <NewServiceCard
+                item={item}
+                onOpenModal={(category) => {
+                  setSelectedCategory(category || "Todos");
+                  setOpen(true);
+                }}
+              />
+            </div>
+          ))}
+        </motion.div>
+
+        <div className="mt-4 md:mt-8">
+          <NewServiceCardBussines />
+        </div>
       </div>
 
       <PlansModal
