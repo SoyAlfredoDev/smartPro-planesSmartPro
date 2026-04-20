@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+import { buttonLight, textCard } from "../assets/style-confing";
 
 export default function NewServiceCard({ item, onOpenModal }) {
   const bullets = [
@@ -18,7 +19,7 @@ export default function NewServiceCard({ item, onOpenModal }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="relative hidden md:block mx-auto w-full max-w-[1200px] mt-8 min-h-[400px] bg-gray-100 rounded-3xl overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08),0_20px_60px_rgba(0,0,0,0.06)] flex flex-col"
+      className="relative hidden md:block mx-auto w-full max-w-[1200px] mt-8 min-h-[400px] bg-gray-100 rounded-2xl overflow-hidden shadow-[0_10px_25px_rgba(0,0,0,0.08),0_20px_60px_rgba(0,0,0,0.06)] flex flex-col mb-8 shadow-[10px_10px_5px_0px_rgba(0,0,0,0.3)]"
     >
       {/* Decorative Circles (mejorados) */}
       <div className="absolute w-[140px] h-[140px] bg-white/20 backdrop-blur-md rounded-full top-[-50px] left-1/3 -translate-x-1/2 shadow-xl"></div>
@@ -53,33 +54,42 @@ export default function NewServiceCard({ item, onOpenModal }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-sm md:text-md  text-gray-600 leading-relaxed max-w-[65%] z-20"
+          className={textCard.description}
         >
           En SmartPro® puedes acceder no solo a servicios, sino a un modelo
           completo que incluye:
         </motion.p>
-
-        {/* Bullets */}
-        <div className="my-2 space-y-2 z-20 w-[55%] mb-10">
-          {bullets.map((bullet, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              className="flex items-start gap-2"
-            >
-              <Check className="h-4 w-4 shrink-0 text-pink font-bold mt-[4px]" />
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                {bullet}
-              </p>
-            </motion.div>
-          ))}
+        <div className="w-full flex ">
+          {/* Bullets */}
+          <div className="w-1/3 my-2 space-y-2 z-20 mb-10 ">
+            {bullets.map((bullet, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                className="flex items-start gap-2"
+              >
+                <Check className="h-4 w-4 shrink-0 text-pink font-bold mt-[4px]" />
+                <p className={textCard.bullet}>{bullet}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="w-1/3 my-2 space-y-2 z-20 mb-10 ">
+            <img
+              src={
+                "https://smartpro.cl/wp-content/uploads/2025/06/Recurso-14@3x-8.png"
+              }
+              alt="service"
+              className="w-[170px] h-full object-contain opacity-50"
+            />
+          </div>
         </div>
+
         {/* IMAGE (mejor integrada) */}
         <div className="absolute w-full bottom-0 flex justify-end mt-6 pr-6">
           <motion.img
-            src="/images/service-07.png"
+            src="https://smartpro.cl/wp-content/uploads/2026/04/service-07.png"
             alt="service"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -90,12 +100,12 @@ export default function NewServiceCard({ item, onOpenModal }) {
       </div>
 
       {/* FOOTER */}
-      <div className=" h-full  bg-gradient-to-r from-purple-900 to-purple-600 py-6 flex justify-center items-center bg-red-500">
+      <div className=" h-full  bg-gradient-to-r from-[#b33ab4]  via-[#b33ab4] to-[#2b16d1] py-6 flex justify-center items-center ">
         <motion.button
           onClick={() => onOpenModal(item.category)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          className="flex items-center gap-2 bg-white text-purple-900 font-semibold px-8 py-3 rounded-2xl shadow-md transition"
+          className={buttonLight.button}
         >
           Ver planes{" "}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

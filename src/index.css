@@ -4,37 +4,37 @@
 
 :root {
   --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
+  --secondary-color: #b33ab4;
   --accent-color: #ec4899;
   --bg-color: #f8fafc;
   --text-color: #1e293b;
 }
 
 .bg-pink {
-  background-color: #ec4899;
+  background-color: var(--accent-color);
 }
 
 .text-pink {
-  color: #ec4899;
+  color: var(--accent-color);
 }
 
-.border-pink-smartpro {
-  border-color: #ec4899;
+.border-pink {
+  border-color: #b33ab4;
 }
 
-.bg-purple-smartpro {
-  background-color: #8b5cf6;
+.bg-purple {
+  background-color: #b33ab4;
 }
 
-.text-purple-smartpro {
-  color: #8b5cf6;
+.text-purple {
+  color: #b33ab4;
 }
 
-.border-purple-smartpro {
-  border-color: #8b5cf6;
+.border-purple {
+  border-color: var(--secondary-color);
 }
 
-.bg-blue-smartpro {
+.bg-blue {
   background-color: #6366f1;
 }
 

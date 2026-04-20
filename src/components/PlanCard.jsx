@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import "./PlanCard.css";
 
 export default function PlanCard({ plan }) {
-  console.log(plan);
   const {
     name,
     oldPrice,

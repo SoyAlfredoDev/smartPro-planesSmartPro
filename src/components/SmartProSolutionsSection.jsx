@@ -1,11 +1,10 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import ServiceCard from "./ServiceCard";
 import PlansModal from "./PlansModal";
-import BusinessLaunchSection from "./BusinessLaunchSection";
-
-import NewServiceCard from "./NewServiceCard";
 import NewServiceCardBussines from "./NewServiceCardBussines";
+import Card_1Components from "./serviceCard/Card_1Components";
+import Card_2Components from "./serviceCard/Card_2Components";
+import Card_4Components from "./serviceCard/Card_4Components";
 
 // Pantallas medianas y grandes (Desktop/Tablet)
 const services = [
@@ -14,172 +13,94 @@ const services = [
     subtitle: "Landing Pages y Sitios\nWeb de alto impacto",
     description:
       "Creamos páginas diseñadas para convertir: rápidas, estratégicas y enfocadas en generar contactos y ventas desde el primer día.",
-    image: "/images/service-01.png",
-    bullets: [
-      "Páginas web optimizadas",
-      "Tiendas online",
-      "Landing pages",
-      "Sistemas a medida",
-    ],
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/service-01.png",
+    bullets: ["Páginas web optimizadas", "Tiendas online", "Landing pages"],
     category: "Desarrollo Web",
+    modelCard: 1,
   },
   {
     title: "Campañas\nPublicitarias",
     subtitle: "Atracción de clientes reales",
     description:
       "Diseñamos y ejecutamos campañas en redes sociales orientadas a resultado, aumentando visibilidad, leads y oportunidades comerciales.",
-    image: "/images/service-02.png",
-    bullets: [
-      "Generación de Leads",
-      "Visibilidad",
-      "Configuración estratégica",
-    ],
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/service-02.png",
+    bullets: ["Leads", "Visibilidad", "Configuración estratégica"],
     category: "Campaña Publicitaria",
+    modelCard: 4,
   },
   {
     title: "Redes Sociales\n& Contenido",
     subtitle: "Posicionamiento constante",
     description:
       "Gestionamos tus redes sociales con estrategia: contenido, diseño, planificación y crecimiento orgánico.",
-    image: "/images/service-03.png",
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/service-03.png",
     bullets: [
       "Gestión de contenido",
       "Optimización de perfiles",
       "Piezas graficas",
     ],
     category: "Redes Sociales",
-  },
-  {
-    title: "Producción \n Audiovisual",
-    description:
-      "Creamos contenido visual de alto impacto para potenciar tu marca y conectar con tu audiencia.",
-    subtitle: "Piezas graficas y videos corporativos",
-    image: "/images/service-04.png",
-    bullets: [
-      "Piezas comerciales",
-      "Videos corporativos",
-      "Producciones con  modelo",
-    ],
-    category: "Producción Visual",
+    modelCard: 2,
   },
   {
     title: "Automatización\n& Conversión",
-    image: "/images/service-05.png",
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/services.png",
+    description:
+      "Creamos páginas diseñadas para convertir: rápidas, estratégicas y enfocadas en generar contactos y ventas desde el primer día.",
     bullets: [
       "Respuestas automáticas",
       "Filtrado de clientes",
       "Agendamiento automático",
     ],
     category: "Automatización Bots",
+    modelCard: 4,
+  },
+  {
+    title: "Producción \n Audiovisual",
+    description:
+      "Creamos contenido visual de alto impacto para potenciar tu marca y conectar con tu audiencia.",
+    subtitle: "Piezas graficas y videos corporativos",
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/service-04.png",
+    bullets: [
+      "Piezas comerciales",
+      "Videos corporativos",
+      "Producciones con  modelo",
+    ],
+    category: "Producción Visual",
+    modelCard: 2,
   },
   {
     title: "Membrecías Y Negocios",
     description:
       "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
     subtitle: "Modelo listo para vender",
-    image: "/images/service-06.png",
+    image: "https://smartpro.cl/wp-content/uploads/2026/04/service-06.png",
     bullets: [
       "Estructura comercial",
       "Servicios integrados",
       "Modelo validado",
     ],
     category: "Membresías",
+    modelCard: 1,
   },
 ];
 
+const membresias = {
+  title: "Membrecías Y Negocios",
+  description:
+    "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
+  subtitle: "Modelo listo para vender",
+  image: "https://smartpro.cl/wp-content/uploads/2026/04/service-07.png",
+  bullets: [
+    "Estructura comercial",
+    "Soporte estratégico",
+    "Generación de oportunidades",
+  ],
+  category: "Membresías",
+  modelCard: 4,
+};
 // Pantallas pequeñas (Móvil)
-const services2 = [
-  {
-    title: "Negocio funcionando desde el día 1",
-    description:
-      "En SmartPro® puedes acceder no solo a servicios, sino a un modelo completo que incluye:",
-    image: "/images/service-07.png",
-    bullets: [
-      "Estructura comercial",
-      "Soporte estratégico",
-      "Generación de oportunidades",
-      "Automatización",
-      "Soporte estratégico",
-    ],
-    category: "Negocio Completo",
-  },
-  {
-    title: "Desarrollo Web Presencia Digital",
-    subtitle: "Landing Pages y Sitios\nWeb de alto impacto",
-    description:
-      "Creamos páginas diseñadas para convertir: rápidas, estratégicas y enfocadas en generar contactos y ventas desde el primer día.",
-    image: "/images/service-01.png",
-    bullets: [
-      "Páginas web optimizadas",
-      "Tiendas online",
-      "Landing pages",
-      "Sistemas a medida",
-    ],
-    category: "Desarrollo Web",
-  },
-  {
-    title: "Campañas\nPublicitarias",
-    subtitle: "Atracción de clientes reales",
-    description:
-      "Diseñamos y ejecutamos campañas en redes sociales orientadas a resultado, aumentando visibilidad, leads y oportunidades comerciales.",
-    image: "/images/service-02.png",
-    bullets: [
-      "Generación de Leads",
-      "Visibilidad",
-      "Configuración estratégica",
-    ],
-    category: "Campaña Publicitaria",
-  },
-  {
-    title: "Redes Sociales\n& Contenido",
-    subtitle: "Posicionamiento constante",
-    description:
-      "Gestionamos tus redes sociales con estrategia: contenido, diseño, planificación y crecimiento orgánico.",
-    image: "/images/service-03.png",
-    bullets: [
-      "Gestión de contenido",
-      "Optimización de perfiles",
-      "Piezas graficas",
-    ],
-    category: "Redes Sociales",
-  },
-  {
-    title: "Producción \n Audiovisual",
-    description:
-      "Creamos contenido visual de alto impacto para potenciar tu marca y conectar con tu audiencia.",
-    subtitle: "Piezas graficas y videos corporativos",
-    image: "/images/service-04.png",
-    bullets: [
-      "Piezas comerciales",
-      "Videos corporativos",
-      "Producciones con  modelo",
-    ],
-    category: "Producción Visual",
-  },
-  {
-    title: "Automatización\n& Conversión",
-    image: "/images/service-05.png",
-    bullets: [
-      "Respuestas automáticas",
-      "Filtrado de clientes",
-      "Agendamiento automático",
-    ],
-    category: "Automatización Bots",
-  },
-  {
-    title: "Membrecías Y Negocios",
-    description:
-      "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
-    subtitle: "Modelo listo para vender",
-    image: "/images/service-06.png",
-    bullets: [
-      "Estructura comercial",
-      "Servicios integrados",
-      "Modelo validado",
-    ],
-    category: "Membresías",
-  },
-];
+const services2 = [membresias, ...services];
 
 const sectionStagger = {
   hidden: {},
@@ -222,10 +143,27 @@ export default function SmartProSolutionsSection() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
   return (
     <section
       id="Servicios"
-      className="relative overflow-hidden pt-8 pb-6 sm:pt-16 sm:pb-0 lg:pt-14 lg:pb-0"
+      className="relative overflow-hidden pt-8 pb-6 sm:pt-16 sm:pb-0 lg:pt-14 lg:mb-10"
     >
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
@@ -235,8 +173,8 @@ export default function SmartProSolutionsSection() {
 
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[320px] overflow-hidden sm:h-[420px] lg:h-[440px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#4c2682_0%,_#34175f_38%,_#220f43_72%,_#180b31_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_24%,rgba(255,255,255,0)_48%)]" />
+        {/*<div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#4c2682_0%,_#34175f_38%,_#220f43_72%,_#180b31_100%)]" />*/}
+        {/*<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_24%,rgba(255,255,255,0)_48%)]" />*/}
 
         <motion.div
           animate={{ x: [0, 16, 0], y: [0, -8, 0] }}
@@ -279,22 +217,29 @@ export default function SmartProSolutionsSection() {
           viewport={{ once: true, amount: 0.3 }}
           className="mx-auto max-w-[860px] text-center text-white"
         >
-          <motion.h2
-            variants={headerItem}
-            className="mx-auto w-fit rounded-full border border-[#ff7b00] bg-[#ffe0cc] px-4 py-1.5 text-xs text-[#ff7b00] sm:text-sm"
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex text-center"
           >
-            Nuestros servicios
-          </motion.h2>
+            <motion.h1
+              variants={itemVariants}
+              className="max-w-6xl font-bold tracking-tight text-white"
+            >
+              {/* Parte superior: Blanco con ligera transparencia */}
+              <span className="text-xl sm:text-3xl md:text-3xl text-white/90 font-medium">
+                Creamos ecosistemas completos que combinan{" "}
+                <br className="hidden md:block" />
+              </span>
 
-          <motion.p
-            variants={headerItem}
-            className="mt-4 text-sm leading-relaxed text-white/85 sm:text-lg md:text-xl lg:text-2xl"
-          >
-            Creamos ecosistemas completos que combinan{" "}
-            <strong className="text-white">
-              presencia digital, automatización y generación de ventas reales.
-            </strong>
-          </motion.p>
+              {/* Parte inferior: Degradado sutil de Blanco a Púrpura Oscuro */}
+              <span className="text-2xl sm:text-4xl md:text-5xl bg-[#4c1d95] bg-clip-text text-transparent m-0 p-0">
+                presencia digital, automatización y generación de ventas reales.
+              </span>
+            </motion.h1>
+          </motion.div>
         </motion.header>
 
         {/* --- CONTENEDOR MÓVIL (Usa services2) --- */}
@@ -305,7 +250,7 @@ export default function SmartProSolutionsSection() {
           viewport={{ once: true, amount: 0.12 }}
           ref={carouselRef}
           onScroll={handleScroll}
-          className="md:hidden hide-scrollbar mt-8 flex w-full snap-x snap-mandatory overflow-x-auto pb-4"
+          className="md:hidden hide-scrollbar mt-4 md:mt-8 flex w-full snap-x snap-mandatory overflow-x-auto pb-4"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {services2.map((item, i) => (
@@ -313,13 +258,41 @@ export default function SmartProSolutionsSection() {
               key={`mobile-${i}`}
               className="w-[99%] mx-auto justify-center shrink-0 snap-center px-2 sm:min-w-[30px]"
             >
-              <NewServiceCard
-                item={item}
-                onOpenModal={(category) => {
-                  setSelectedCategory(category || "Todos");
-                  setOpen(true);
-                }}
-              />
+              {item.modelCard === 1 ? (
+                <Card_1Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    console.log(category);
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : item.modelCard === 2 ? (
+                <Card_2Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    console.log(category);
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : item.modelCard === 3 ? (
+                <Card_3Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : item.modelCard === 4 ? (
+                <Card_4Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : null}
             </div>
           ))}
         </motion.div>
@@ -331,12 +304,12 @@ export default function SmartProSolutionsSection() {
               <div
                 key={`dot-${i}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? "w-6 bg-pink-500" : "w-2 bg-pink-200"
+                  activeIndex === i ? "w-6 bg-white" : "w-2 bg-white/70"
                 }`}
               />
             ))}
           </div>
-          <p className="mt-3 text-xs font-medium text-pink-400">
+          <p className="mt-3 text-xs font-medium text-white">
             Desliza para ver todos nuestros servicios
           </p>
         </div>
@@ -351,19 +324,43 @@ export default function SmartProSolutionsSection() {
         >
           {services.map((item, i) => (
             <div key={`desktop-${i}`} className="w-full">
-              <NewServiceCard
-                item={item}
-                onOpenModal={(category) => {
-                  setSelectedCategory(category || "Todos");
-                  setOpen(true);
-                }}
-              />
+              {item.modelCard === 4 ? (
+                <Card_4Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : item.modelCard === 1 ? (
+                <Card_1Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              ) : (
+                <Card_2Components
+                  item={item}
+                  onOpenModal={(category) => {
+                    setSelectedCategory(category || "Todos");
+                    setOpen(true);
+                  }}
+                />
+              )}
             </div>
           ))}
         </motion.div>
 
         <div className="mt-4 md:mt-8">
-          <NewServiceCardBussines />
+          <NewServiceCardBussines
+            item={services2[0]}
+            onOpenModal={(category) => {
+              setSelectedCategory(category || "Todos");
+              setOpen(true);
+            }}
+          />
         </div>
       </div>
 
