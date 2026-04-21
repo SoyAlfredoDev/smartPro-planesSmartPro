@@ -47,14 +47,14 @@ export default function Card_1Components({ item, onOpenModal }) {
         </motion.p>
 
         {/* Bullets */}
-        <div className="my-2 space-y-2 z-20 w-[60%] md:w-[55%]">
+        <div className=" flex flex-col gap-1 md:gap-2 w-[60%] md:w-[55%]">
           {item.bullets.map((bullet, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 + index * 0.1 }}
-              className="flex items-start gap-2"
+              className="flex items-center gap-2 align-center"
             >
               <Check className={textCard.icon} />
               <p className={textCard.bullet}>{bullet}</p>
@@ -62,13 +62,13 @@ export default function Card_1Components({ item, onOpenModal }) {
           ))}
         </div>
 
-        <div className="absolute bottom-20 left-2 w-[75px] h-[75px]  p-4">
+        <div className="absolute hidden md:block  md:bottom-20 left-2 w-[75px] h-[75px] justify-center items-center`">
           <img
             src={
               "https://smartpro.cl/wp-content/uploads/2025/06/Recurso-14@3x-8.png"
             }
             alt="service"
-            className="w-full h-full object-contain opacity-50"
+            className="w-[75px] h-[75px] p-4 object-contain opacity-50"
           />
         </div>
         {/* IMAGE (mejor integrada) */}
@@ -85,7 +85,7 @@ export default function Card_1Components({ item, onOpenModal }) {
       </div>
 
       {/* FOOTER */}
-      <div className="absolute h-[84px] bottom-0 w-full bg-gradient-to-r from-[#b33ab4]  via-[#b33ab4] to-[#2b16d1] py-6 flex justify-center items-center">
+      <div className="absolute h-[84px]  bottom-0 w-full bg-gradient-to-r from-[#b33ab4]  via-[#b33ab4] to-[#2b16d1] py-6 flex justify-center items-center">
         <motion.button
           onClick={() => {
             console.log(item.category);

@@ -26,7 +26,7 @@ export default function Card_4Components({ item, onOpenModal }) {
             "https://smartpro.cl/wp-content/uploads/2025/06/Recurso-14@3x-8.png"
           }
           alt="service"
-          className="w-full h-full object-contain opacity-50"
+          className="w-[75px] h-[75px] object-contain opacity-50"
         />
       </div>
 
@@ -55,13 +55,15 @@ export default function Card_4Components({ item, onOpenModal }) {
           ease: "easeOut",
           delay: 0.2,
         }}
-        className={textCard.description + " w-[75%] p-4 md:px-8 z-30"}
+        className={
+          textCard.description + " w-[68%] md:w-[75%] p-4 md:px-8 z-30"
+        }
       >
         {item.description}
       </motion.div>
 
       {/* bullets */}
-      <div className="flex flex-col gap-2 px-4 w-[60%] md:px-8 md:w-[70%] z-30">
+      <div className="flex flex-col gap-1 md:gap-2 px-4 w-[60%] md:px-8 md:w-[70%] z-30">
         {item.bullets.map((bullet, index) => (
           <motion.div
             key={index}
@@ -80,7 +82,7 @@ export default function Card_4Components({ item, onOpenModal }) {
         ))}
       </div>
       {/* boton */}
-      <div className="absolute bottom-10 md:bottom-4  left-1/2 -translate-x-1/2 z-30 ">
+      <div className="absolute bottom-2 md:bottom-4  left-1/2 -translate-x-1/2 z-30 ">
         <motion.button
           onClick={() => onOpenModal(item.category)}
           whileHover={{ scale: 1.05 }}

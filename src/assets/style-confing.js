@@ -4,7 +4,7 @@ export const serviceCard =
 
 export const buttonDark = {
   button:
-    "relative flex items-center gap-2 bg-gradient-to-r from-[#b33ab4]  via-[#b33ab4] to-[#2b16d1] text-white font-semibold px-8 py-2 rounded-2xl shadow-md transition z-40",
+    "relative flex items-center gap-2 bg-gradient-to-r from-[#b33ab4]  via-[#b33ab4] to-[#2b16d1] text-white font-semibold px-8 py-2 rounded-2xl shadow-md transition z-40 min-w-[200px] text-center justify-center",
   arrow: "h-4 w-4 transition-transform duration-300 group-hover:translate-x-1",
 };
 
@@ -16,9 +16,10 @@ export const buttonLight = {
 };
 
 export const textCard = {
-  titleDark: "text-4xl font-bold z-30 font-sans focus:text-white z-30 h2",
+  titleDark:
+    "text-3xl md:text-4xl font-bold z-30 font-sans focus:text-white z-30 h2",
   titleLight:
-    "text-4xl font-bold z-30 font-sans focus:text-white text-white z-30 h2",
+    "text-3xl md:text-4xl font-bold z-30 font-sans focus:text-white text-white z-30 h2",
   description: " text-gray-600 leading-relaxed z-30 text-md p",
   descriptionLight: " text-gray-600 leading-relaxed z-30 text-lg text-white p",
   bullet: "text-lg text-gray-600 leading-relaxed",

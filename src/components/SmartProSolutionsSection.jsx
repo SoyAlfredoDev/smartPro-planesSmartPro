@@ -226,11 +226,11 @@ export default function SmartProSolutionsSection() {
           >
             <motion.h1
               variants={itemVariants}
-              className="max-w-6xl font-bold tracking-tight text-white"
+              className="relative w-[1200px] font-bold tracking-tight text-white"
             >
               {/* Parte superior: Blanco con ligera transparencia */}
-              <span className="text-xl sm:text-3xl md:text-3xl text-white/90 font-medium">
-                Creamos ecosistemas completos que combinan{" "}
+              <span className="text-2xl sm:text-4xl md:text-5xl text-gray-900 font-medium   w-full">
+                Creamos ecosistema que combinan{" "}
                 <br className="hidden md:block" />
               </span>
 
@@ -304,12 +304,12 @@ export default function SmartProSolutionsSection() {
               <div
                 key={`dot-${i}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? "w-6 bg-white" : "w-2 bg-white/70"
+                  activeIndex === i ? "w-6 bg-gray-500" : "w-2 bg-gray-500/70"
                 }`}
               />
             ))}
           </div>
-          <p className="mt-3 text-xs font-medium text-white">
+          <p className="mt-3 text-xs font-medium text-gray-500">
             Desliza para ver todos nuestros servicios
           </p>
         </div>

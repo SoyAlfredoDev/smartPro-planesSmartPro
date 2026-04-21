@@ -18,16 +18,16 @@ export default function Card_4Components({ item, onOpenModal }) {
       <div className="absolute w-[70px] h-[70px] bg-white/90 backdrop-blur-md rounded-full top-[20px] right-[-20px] shadow-lg z-0"></div>
 
       <div className="absolute w-[290px] h-[290px] bg-white/80 backdrop-blur-md rounded-full bottom-[160px] right-[70px] shadow-xl z-0"></div>
-      <div className="absolute w-[120px] h-[120px] bg-white/80 backdrop-blur-md rounded-full top-[300px] right-[-60px] shadow-[0_0_20px_rgba(0,0,0,0.2)] z-50"></div>
+      <div className="absolute w-[120px] h-[120px] bg-white/80 backdrop-blur-md rounded-full top-[260px] right-[-60px] shadow-[0_0_20px_rgba(0,0,0,0.2)] z-50"></div>
 
       {/*Logo*/}
-      <div className="relative w-full h-[75px] p-4 flex items-center justify-center">
+      <div className="relative w-[75px] h-[75px] p-4 flex items-center justify-center">
         <img
           src={
             "https://smartpro.cl/wp-content/uploads/2025/06/Recurso-14@3x-8.png"
           }
           alt="service"
-          className="w-full h-full object-contain opacity-50"
+          className="w-[75px] h-[75px] object-contain opacity-50"
         />
       </div>
 
@@ -61,7 +61,7 @@ export default function Card_4Components({ item, onOpenModal }) {
               {item.description}
             </motion.div>
             {/* bullets */}
-            <div className="flex flex-col gap-2 z-30 mt-4">
+            <div className="flex flex-col gap-1 md:gap-2  z-30 mt-4">
               {item.bullets.map((bullet, index) => (
                 <motion.div
                   key={index}
@@ -84,7 +84,7 @@ export default function Card_4Components({ item, onOpenModal }) {
       </div>
 
       {/* boton */}
-      <div className="absolute bottom-5  flex justify-center w-full ">
+      <div className="absolute bottom-5 flex justify-center w-full">
         <motion.button
           onClick={() => onOpenModal(item.category)}
           whileHover={{ scale: 1.05 }}
