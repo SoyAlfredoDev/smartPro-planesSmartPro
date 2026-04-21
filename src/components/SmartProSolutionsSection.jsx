@@ -86,7 +86,7 @@ const services = [
 ];
 
 const membresias = {
-  title: "Membrecías Y Negocios",
+  title: "Membresías Y Negocios",
   description:
     "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
   subtitle: "Modelo listo para vender",
