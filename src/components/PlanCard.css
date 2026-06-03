@@ -16,10 +16,7 @@
   isolation: isolate;
   transition:
     box-shadow 0.22s ease,
-    border-color 0.22s ease,
-    transform 0.22s ease;
-  animation: planCardFadeUp 0.45s ease both;
-  animation-delay: calc(var(--animation-order, 0) * 70ms);
+    border-color 0.22s ease;
 }
 
 .plan-card--highlighted {
@@ -430,4 +427,138 @@
 
 .is-cotizalo .plan-card__price {
   color: #e87709;
+}
+
+/* Hover styles for PlanCard */
+.plan-card:hover {
+  border-color: #ff2f92;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    0 30px 60px rgba(255, 47, 146, 0.15);
+}
+
+.plan-card--highlighted:hover {
+  border-color: #ff0080;
+  box-shadow:
+    0 14px 34px rgba(255, 0, 128, 0.1),
+    0 32px 70px rgba(255, 0, 128, 0.22);
+}
+
+.plan-card.is-isapre:hover {
+  border-color: #039272;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    0 30px 60px rgba(3, 146, 114, 0.18);
+}
+
+.plan-card.is-cotizalo:hover {
+  border-color: #e87709;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    0 30px 60px rgba(232, 119, 9, 0.18);
+}
+
+/* =============================================
+   CONSALUD THEME
+   Corporate green: #00513F
+   Accent yellow:   #D8C300
+   ============================================= */
+
+/* Card background & border */
+.is-consalud.plan-card {
+  background: linear-gradient(165deg, #f0faf6 0%, #e6f5ee 40%, #ffffff 100%);
+  border-color: #00513F;
+}
+
+/* Title color */
+.is-consalud .plan-card__title {
+  color: #00513F;
+}
+
+/* Price color */
+.is-consalud .plan-card__price {
+  color: #00513F;
+}
+
+/* Tax label */
+.is-consalud .plan-card__tax {
+  color: #00513F;
+}
+
+/* Divider */
+.is-consalud .plan-card__divider {
+  border-top-color: rgba(0, 81, 63, 0.18);
+}
+
+/* Check icon */
+.is-consalud .plan-card__check-wrap {
+  background: rgba(0, 81, 63, 0.08);
+}
+
+.is-consalud .plan-card__check-icon {
+  color: #00513F;
+}
+
+/* Feature text */
+.is-consalud .plan-card__feature-text {
+  color: #1a3a2f;
+}
+
+/* Button: yellow background with green text */
+.is-consalud .plan-card__button {
+  background: linear-gradient(135deg, #D8C300 0%, #c4b000 100%);
+  color: #00513F;
+  box-shadow:
+    0 6px 14px rgba(216, 195, 0, 0.2),
+    0 14px 26px rgba(0, 81, 63, 0.1);
+}
+
+.is-consalud .plan-card__button:hover {
+  box-shadow:
+    0 8px 18px rgba(216, 195, 0, 0.3),
+    0 18px 32px rgba(0, 81, 63, 0.16);
+}
+
+/* Badge: green + yellow combination */
+.is-consalud .plan-card__badge {
+  background: linear-gradient(135deg, #00513F 0%, #006B52 100%);
+  color: #D8C300;
+}
+
+.is-consalud .plan-card__badge--popular {
+  background: linear-gradient(135deg, #D8C300 0%, #c4b000 100%);
+  color: #00513F;
+}
+
+.is-consalud .plan-card__badge-icon {
+  color: #00513F;
+}
+
+/* Highlighted variant for Consalud */
+.is-consalud.plan-card--highlighted {
+  border-color: #D8C300;
+  box-shadow:
+    0 10px 24px rgba(0, 81, 63, 0.08),
+    0 24px 50px rgba(216, 195, 0, 0.14);
+}
+
+/* Hover: default Consalud card */
+.plan-card.is-consalud:hover {
+  border-color: #00513F;
+  box-shadow:
+    0 12px 30px rgba(0, 81, 63, 0.12),
+    0 30px 60px rgba(0, 81, 63, 0.18);
+}
+
+/* Hover: highlighted Consalud card */
+.plan-card.is-consalud.plan-card--highlighted:hover {
+  border-color: #D8C300;
+  box-shadow:
+    0 14px 34px rgba(216, 195, 0, 0.14),
+    0 32px 70px rgba(0, 81, 63, 0.22);
+}
+
+/* Muted text color */
+.is-consalud .plan-card__old-price-label {
+  color: #3d6b5c;
 }

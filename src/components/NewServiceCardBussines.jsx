@@ -39,7 +39,7 @@ export default function NewServiceCard({ item, onOpenModal }) {
           transition={{ delay: 0.1 }}
           className="text-[30px] sm:text-[34px] font-bold leading-tight text-gray-900 max-w-[90%] z-20"
         >
-          Negocio funcionando desde el día 1
+          {item.title}
         </motion.h2>
 
         {/* Accent line */}
@@ -56,8 +56,7 @@ export default function NewServiceCard({ item, onOpenModal }) {
           transition={{ delay: 0.2 }}
           className={textCard.description}
         >
-          En SmartPro® puedes acceder no solo a servicios, sino a un modelo
-          completo que incluye:
+          {item.description}
         </motion.p>
         <div className="w-full flex ">
           {/* Bullets */}
@@ -89,12 +88,12 @@ export default function NewServiceCard({ item, onOpenModal }) {
         {/* IMAGE (mejor integrada) */}
         <div className="absolute w-full bottom-0 flex justify-end mt-6 pr-6">
           <motion.img
-            src="https://smartpro.cl/wp-content/uploads/2026/04/service-07.png"
+            src={item.image}
             alt="service"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className=" w-[80%] md:w-[45%]  object-contain relative z-0"
+            className=" w-[80%] md:w-[45%] object-contain relative z-0"
           />
         </div>
       </div>

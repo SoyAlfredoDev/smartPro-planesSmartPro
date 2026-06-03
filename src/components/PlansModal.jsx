@@ -181,23 +181,23 @@ export default function PlansModal({ isOpen, onClose, category }) {
               <X size={22} />
             </button>
 
-            <div className="shrink-0 border-b border-gray-200 px-6 py-6 pr-12">
+            <div className="shrink-0 border-b border-gray-200 px-6 py-4 pr-12">
               <h3 className="text-2xl font-bold text-[#161124]">
                 {selectedCategory}
               </h3>
-              <p className="mt-2 text-sm text-[#4B5563] sm:text-base">
+              {/*<p className="mt-2 text-sm text-[#4B5563] sm:text-base">
                 🔥 Contenido estratégico + posicionamiento + crecimiento real
-              </p>
+              </p>*/}
             </div>
 
             <div className="min-h-0 flex-1 overflow-y-auto">
               {isRedesSociales ? (
-                <div className="px-6 py-6">
+                <div className="px-6 py-2 md:py-6">
                   <RedesSocialesSection />
                 </div>
               ) : filteredPlans.length > 0 ? (
                 useCarousel ? (
-                  <div className="relative px-3 py-6 sm:px-4">
+                  <div className="relative px-3 py-2 md:py-6 sm:px-4">
                     {canScrollLeft && (
                       <button
                         type="button"
@@ -224,7 +224,7 @@ export default function PlansModal({ isOpen, onClose, category }) {
                       ref={sliderRef}
                       className="
                         no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden
-                        px-10 pb-2 pt-1 sm:px-12 lg:px-14
+                        px-10 pb-6 pt-5 sm:px-12 lg:px-14
                         [scrollbar-width:none] [-ms-overflow-style:none]
                       "
                     >

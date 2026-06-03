@@ -7,7 +7,7 @@ export default function Card_4Components({ item, onOpenModal }) {
     <motion.article
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -6, scale: 1.03 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className={serviceCard}
     >

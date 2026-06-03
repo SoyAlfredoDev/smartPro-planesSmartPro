@@ -1,6 +1,6 @@
 //Estilo para la tarjeta de servicio
 export const serviceCard =
-  "relative w-full max-w-[490px] min-h-[600px] bg-gray-100 rounded-xl overflow-hidden shadow-lg flex flex-col m-2 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.4)] ";
+  "relative w-full max-w-[490px] min-h-[600px] bg-gray-100 rounded-xl overflow-hidden shadow-lg flex flex-col m-2 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.4)] border-2 border-transparent hover:border-[#b33ab4] transition-all duration-300 ";
 
 export const buttonDark = {
   button:

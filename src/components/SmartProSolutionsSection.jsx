@@ -70,7 +70,7 @@ const services = [
     modelCard: 2,
   },
   {
-    title: "Membrecías Y Negocios",
+    title: "Membresías Y Negocios",
     description:
       "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
     subtitle: "Modelo listo para vender",
@@ -85,10 +85,10 @@ const services = [
   },
 ];
 
-const membresias = {
-  title: "Membresías Y Negocios",
+const negocioCompleto = {
+  title: "Negocio funcionando desde el día 1",
   description:
-    "Creamos ecosistemas completos que combinan presencia digital, automatización y generación de ventas reales.",
+    "En SmartPro® puedes acceder no solo a servicios, sino a un modelo completo que incluye:",
   subtitle: "Modelo listo para vender",
   image: "https://smartpro.cl/wp-content/uploads/2026/04/service-07.png",
   bullets: [
@@ -96,11 +96,11 @@ const membresias = {
     "Soporte estratégico",
     "Generación de oportunidades",
   ],
-  category: "Membresías",
+  category: "Negocio Completo",
   modelCard: 4,
 };
 // Pantallas pequeñas (Móvil)
-const services2 = [membresias, ...services];
+const services2 = [negocioCompleto, ...services];
 
 const sectionStagger = {
   hidden: {},
@@ -163,7 +163,7 @@ export default function SmartProSolutionsSection() {
   return (
     <section
       id="Servicios"
-      className="relative overflow-hidden pt-8 pb-6 sm:pt-16 sm:pb-0 lg:pt-14 lg:mb-10"
+      className="relative overflow-hidden pt-8 pb-6 sm:pt-16 sm:pb-0 lg:pt-14 lg:mb-112"
     >
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
@@ -355,9 +355,9 @@ export default function SmartProSolutionsSection() {
 
         <div className="mt-4 md:mt-8">
           <NewServiceCardBussines
-            item={services2[0]}
-            onOpenModal={(category) => {
-              setSelectedCategory(category || "Todos");
+            item={negocioCompleto}
+            onOpenModal={() => {
+              setSelectedCategory("Negocio Completo");
               setOpen(true);
             }}
           />

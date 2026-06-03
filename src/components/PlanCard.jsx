@@ -18,6 +18,7 @@ export default function PlanCard({ plan }) {
     isIsapre = false,
     hasLogo = false,
     isCotizalo = false,
+    isConsalud = false,
   } = plan;
 
   const isHighlighted = highlighted || masVendido;
@@ -26,7 +27,7 @@ export default function PlanCard({ plan }) {
 
   return (
     <motion.article
-      className={`plan-card ${isHighlighted ? "plan-card--highlighted" : ""} ${isIsapre ? "is-isapre" : ""} ${isCotizalo ? "is-cotizalo" : ""}`}
+      className={`plan-card ${isHighlighted ? "plan-card--highlighted" : ""} ${isIsapre ? "is-isapre" : ""} ${isCotizalo ? "is-cotizalo" : ""} ${isConsalud ? "is-consalud" : ""}`}
       style={{ "--animation-order": index }}
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
@@ -36,9 +37,9 @@ export default function PlanCard({ plan }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{
-        y: -4,
-        scale: 1.01,
-        transition: { duration: 0.18, ease: "easeOut" },
+        y: -5,
+        scale: 1.04,
+        transition: { duration: 0.2, ease: "easeOut" },
       }}
     >
       {!hasLogo && (
@@ -64,13 +65,30 @@ export default function PlanCard({ plan }) {
         </>
       )}
       {hasLogo && (
-        <div className="w-full h-[60px] mb-2 mt-[-30px] flex items-center align-center justify-center">
-          <img
-            src={hasLogo}
-            alt={`${name} logo`}
-            className={`w-[75%] my-auto mx-auto ${isCotizalo ? "w-[85%] mt-[5px] is-cotizalo" : ""}`}
-          />
-        </div>
+        <>
+          {(masVendido || hasCustomBadge) && (
+            <div className="plan-card__badge-wrapper">
+              {masVendido && (
+                <span className="plan-card__badge plan-card__badge--popular">
+                  <Star size={13} className="plan-card__badge-icon" />
+                  Más Vendido
+                </span>
+              )}
+              {hasCustomBadge && (
+                <span className="plan-card__badge plan-card__badge--discount">
+                  {badge}
+                </span>
+              )}
+            </div>
+          )}
+          <div className="w-full h-[60px] mb-2 mt-[-30px] flex items-center align-center justify-center">
+            <img
+              src={hasLogo}
+              alt={`${name} logo`}
+              className={`w-[75%] my-auto mx-auto ${isCotizalo ? "w-[85%] mt-[5px] is-cotizalo" : ""}`}
+            />
+          </div>
+        </>
       )}
 
       <header className="plan-card__header">
@@ -130,7 +148,7 @@ export default function PlanCard({ plan }) {
             className="plan-card__button plan-card__button--disabled"
             disabled
           >
-            <span>Pendiente</span>
+            <span>sin stock</span>
           </button>
         )}
       </footer>
